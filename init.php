@@ -1,0 +1,3 @@
+<?php
+
+DEFINE('APPLICATION_PATH', __DIR__ );

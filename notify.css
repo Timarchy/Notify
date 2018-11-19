@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+.main_containter {
+    padding:60px;
+    background: lightgray;
+}
+.main1 {
+    margin-right: 140px;
+}
+.input_timi {
+    padding: 0 10px;
+    margin: 20px 0;
+}
+.main_col {
+    padding:50px;
+    background-color:unset!important;
+}
+.main_inner {
+    background-color: #e9ecef;
+    padding:60px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.col2 {
+    background-color: lightblue;
+}
