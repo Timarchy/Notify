@@ -1,0 +1,31 @@
+.main_div {
+    display:flex;
+    height:115px;
+    width:100%;
+    background: lightgrey;
+}
+.label_div {
+    flex: 3;
+    background: lightblue;
+}
+.summary_div {
+    text-align: center;
+    flex: 6;
+    background: lightpink;
+}
+.exit_div {
+    flex: 3;
+    background: lightgreen;
+    position:relative;
+}
+.button_div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.standard1 {
+    text-align: center;
+    padding: 45px 0;
+    box-sizing: border-box!important;
+    /*display: inline-block;*/
+}

@@ -57,6 +57,7 @@ include "includes/header.php";
 
                         <input type="submit" value="Save" name="create_notif" class="txt2">
                     </form>
+                    <div><a href="index.php">HOME</a></div>
                 </div>
             </div>
         </div
@@ -84,7 +85,7 @@ if(isset($_POST['create_notif'])){
     $summary_background = $_POST['summary_text_bcolor'];
 
 
-    $notif_form_resut[]= [
+    $notif_form_resut = [
 
         "label_text" => $label_text,
         "label_text_fsize" => $label_text_font_size,
@@ -115,7 +116,7 @@ if(isset($_POST['create_notif'])){
     }else {
 
         $query = "INSERT INTO notifications(user_id, status, state, create_date, publish_date, modification_last)";
-        $query .= "VALUES ('{$current_user_id}', '0', '1', now(), now(), now() )";
+        $query .= "VALUES ('{$current_user_id}', '0', '1', now(), now(), now())";
 
         $create_notif = mysqli_query($connection, $query);
         confirm($create_notif);
@@ -132,17 +133,4 @@ if(isset($_POST['create_notif'])){
 
 }
 
-
 ?>
-
-<script>
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            console.log('responseText:' + xmlhttp.responseText);
-        }
-    };
-
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-</script>
