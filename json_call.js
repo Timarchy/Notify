@@ -36,6 +36,7 @@ xmlhttp.onreadystatechange = function() {
         crtDivSummary.innerText = parsedJSON.summary;
         document.getElementById("main_div").appendChild(crtDivExit);
         document.getElementById("exit_div").appendChild(crtBtn);
+        crtBtn.innerText = "x";
 
 
         crtPara.setAttribute("id", "main_div");
@@ -46,5 +47,5 @@ xmlhttp.onreadystatechange = function() {
     }
 };
 
-xmlhttp.open("GET", "./Json/43/data.json", true);
+xmlhttp.open("GET", "./Json/45/data.json", true);
 xmlhttp.send();

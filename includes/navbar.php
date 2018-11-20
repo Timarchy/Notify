@@ -15,5 +15,8 @@
         <li class="nav-item">
             <a class="nav-link" href="notifications.php">Notify list</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="preview_template.php">Preview Template</a>
+        </li>
     </ul>
 </nav>
