@@ -11,11 +11,5 @@ include "includes/header.php";
         <button class="button_div">X</button>
     </div>
 </div>
-<!-- faza ii ca tu aici nu poti sa scrii javascript inauntru la divu ala in loc de label doar daca carpim or smth
 
-
-da nu aia vreau sa fac... am facut asta numasa am o schita la cont s tru ctioek
-
-
-ok-->
 
