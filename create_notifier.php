@@ -53,7 +53,7 @@ if(isset($_POST['create_notif'])){
     }else {
 
         $query = "INSERT INTO notifications(user_id, status, state, create_date, publish_date, modification_last)";
-        $query .= "VALUES ('{$current_user_id}', '0', '1', now(), now(), now())";
+        $query .= "VALUES ('{$current_user_id}', '0', '1', now(), '-', '-')";
 
         $create_notif = mysqli_query($connection, $query);
         confirm($create_notif);
@@ -131,50 +131,4 @@ if(isset($_POST['create_notif'])){
         </div
     </div>
 </div>
-
-<!--<div class="container">
-    <form id="contact" action="" method="post">
-        <h3>Create Notifier</h3>
-        </br>
-        <fieldset>
-            <input placeholder="Label Title" type="text" tabindex="1" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Label font size" type="text" tabindex="2" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Label font color" type="text" tabindex="3" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Label background color" type="text" tabindex="4" required autofocus>
-        </fieldset>
-        </br>
-        <fieldset>
-            <input placeholder="Sponsor's URL" type="url" tabindex="5" required>
-        </fieldset>
-        </br>
-        <fieldset>
-            <textarea placeholder="Type summary here...." tabindex="6" required></textarea>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Summary font size" type="text" tabindex="7" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Summary font color" type="text" tabindex="8" required>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Summary background color" type="color" tabindex="9" required>
-        </fieldset>
-        <fieldset>
-            <button name="submit" type="submit" id="contact-submit" value="Save">Save</button>
-        </fieldset>
-        <fieldset>
-            <button name="create_notif" type="submit" id="contact-submit">
-                <a href="index.php" style="color:#fff;">HOME</a>
-            </button>
-        </fieldset>
-    </form>
-</div>
--->
-
 

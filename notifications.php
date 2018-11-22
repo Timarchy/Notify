@@ -74,7 +74,7 @@ include "includes/navbar.php";
 
                 echo "<td>$template_modification</td>";
                 echo "<td>$template_published</td>";
-                echo "<td><a href='notifications.php?source=edit_notif&n_id={$template_id}'>Edit</a></td>";
+                echo "<td><a href='edit_notifie.php?id={$template_id}'>Edit</a></td>";
                 echo "<td><a href='notifications.php?delete={$template_id}'>Delete</a></td>";
 
                 echo "<tr>";
