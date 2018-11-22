@@ -73,6 +73,8 @@ include "includes/navbar.php";
 
         echo "<td>$template_modification</td>";
         echo "<td>$template_published</td>";
+        echo "<td>Edit</td>";
+        echo "<td>Delete</td>";
 
         echo "<tr>";
 

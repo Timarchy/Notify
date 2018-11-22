@@ -4,6 +4,7 @@ include "functions.php";
 session_start();
 ?>
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,3 +40,6 @@ session_start();
         <link rel="stylesheet" type="text/css" href="live_template_style.css">
 
     </head>
+<?php
+var_dump($_SESSION['username']);
+?>

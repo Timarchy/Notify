@@ -1,4 +1,5 @@
 
+/*
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -48,4 +49,4 @@ xmlhttp.onreadystatechange = function() {
 };
 
 xmlhttp.open("GET", "./Json/45/data.json", true);
-xmlhttp.send();
+xmlhttp.send();*/
