@@ -1,13 +1,25 @@
 <?php
-include "includes/header.php";
-include "includes/navbar.php";
-?>
 
-<?php
+if(isset($_GET['n_id'])){
+    $the_notify_id = $_GET['n_id'];
+}
 
-if(isset($_POST['create_notif'])){
+$query = "SELECT * FROM notifications WHERE id = {$the_notify_id}";
+$selected_post_by_id = mysqli_query($connection, $query);
 
-    $notif_form_resut = [];
+while($row = mysqli_fetch_assoc($selected_post_by_id)){
+
+    $template_id = $row['id'];
+    $template_state = $row['state'];
+    $template_creation_date = $row['create_date'];
+    $template_modification = $row['modification_last'];
+    $template_published = $row['publish_date'];
+
+}
+
+if(isset($_POST['edit_notif'])){
+
+    $notif_edit_form_resut = [];
 
     $label_text = $_POST['label'];
     $label_text_font_size = $_POST['label_text_fsize'];
@@ -22,7 +34,7 @@ if(isset($_POST['create_notif'])){
     $summary_background = $_POST['summary_text_bcolor'];
 
 
-    $notif_form_resut = [
+    $notif_edit_form_resut = [
 
         "label_text" => $label_text,
         "label_text_fsize" => $label_text_font_size,
@@ -38,36 +50,6 @@ if(isset($_POST['create_notif'])){
 
     ];
 
-
-
-    $current_user_id = $_SESSION['user_id'];
-
-    $label_text = mysqli_real_escape_string($connection, $label_text);
-    $sponsor_url = mysqli_real_escape_string($connection, $sponsor_url);
-    $summary = mysqli_real_escape_string($connection, $summary);
-
-
-
-    if ($label_text == '' || empty($label_text) || $sponsor_url == '' || empty($sponsor_url) || $summary == '' || empty($summary)) {
-        echo "This field should not be empty";
-    }else {
-
-        $query = "INSERT INTO notifications(user_id, status, state, create_date, publish_date, modification_last)";
-        $query .= "VALUES ('{$current_user_id}', '0', '1', now(), now(), now())";
-
-        $create_notif = mysqli_query($connection, $query);
-        confirm($create_notif);
-
-
-        $fpath = "/var/www/html/NotifBar/Json/";
-
-        mkdir($fpath . mysqli_insert_id($connection), 0777);
-        $fcreation = fopen("/var/www/html/NotifBar/Json/" . mysqli_insert_id($connection) . '/data.json', 'w');
-        fwrite($fcreation, json_encode($notif_form_resut));
-        fclose($fcreation);
-
-    }
-
 }
 
 ?>
@@ -80,7 +62,7 @@ if(isset($_POST['create_notif'])){
                 <div class="form">
                     <form method="post" id="contactFrm" name="contactFrm">
                         <input type="text" required="" placeholder="Label text" value="" name="label" class="txt">
-                        <select name="label_text_fsize" id="label_font_size" style="margin-bottom: 10px;">
+                        <select name="label_text_fsize" id="label_font_size" value="" style="margin-bottom: 10px;">
                             <?php
                             $fonts = ["14px", "16px", "18px", "20px"];
 
@@ -104,7 +86,7 @@ if(isset($_POST['create_notif'])){
 
                         <textarea required="" placeholder="Demo summary" name="summary" type="text" class="txt_3"></textarea>
 
-                        <select name="summary_font_size" id="summary_font_size" style="margin-bottom: 10px;">
+                        <select name="summary_font_size" id="summary_font_size" value="" style="margin-bottom: 10px;">
                             <?php
                             $fonts = ["12px", "14px", "16px"];
 
@@ -123,7 +105,9 @@ if(isset($_POST['create_notif'])){
                             <label for="head">Background</label>
                         </div>
 
-                        <input type="submit" value="Save" name="create_notif" class="txt2">
+
+
+                        <input type="submit" value="Save" name="edit_notif" class="txt2">
                     </form>
                     <div><a href="index.php">HOME</a></div>
                 </div>
@@ -132,49 +116,41 @@ if(isset($_POST['create_notif'])){
     </div>
 </div>
 
-<!--<div class="container">
-    <form id="contact" action="" method="post">
-        <h3>Create Notifier</h3>
-        </br>
-        <fieldset>
-            <input placeholder="Label Title" type="text" tabindex="1" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Label font size" type="text" tabindex="2" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Label font color" type="text" tabindex="3" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Label background color" type="text" tabindex="4" required autofocus>
-        </fieldset>
-        </br>
-        <fieldset>
-            <input placeholder="Sponsor's URL" type="url" tabindex="5" required>
-        </fieldset>
-        </br>
-        <fieldset>
-            <textarea placeholder="Type summary here...." tabindex="6" required></textarea>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Summary font size" type="text" tabindex="7" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Summary font color" type="text" tabindex="8" required>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Summary background color" type="color" tabindex="9" required>
-        </fieldset>
-        <fieldset>
-            <button name="submit" type="submit" id="contact-submit" value="Save">Save</button>
-        </fieldset>
-        <fieldset>
-            <button name="create_notif" type="submit" id="contact-submit">
-                <a href="index.php" style="color:#fff;">HOME</a>
-            </button>
-        </fieldset>
-    </form>
-</div>
--->
-
-
+<!--<div class="container">-->
+<!--    <form id="contact" action="" method="post">-->
+<!--        <h3>Create Notifier</h3>-->
+<!--        </br>-->
+<!--        <fieldset>-->
+<!--            <input placeholder="Label Title" type="text" tabindex="1" required autofocus>-->
+<!--        </fieldset>-->
+<!--        <fieldset>-->
+<!--            <input placeholder="Label font size" type="text" tabindex="2" required autofocus>-->
+<!--        </fieldset>-->
+<!--        <fieldset>-->
+<!--            <input placeholder="Label font color" type="text" tabindex="3" required autofocus>-->
+<!--        </fieldset>-->
+<!--        <fieldset>-->
+<!--            <input placeholder="Label background color" type="text" tabindex="4" required autofocus>-->
+<!--        </fieldset>-->
+<!--        </br>-->
+<!--        <fieldset>-->
+<!--            <input placeholder="Sponsor's URL" type="url" tabindex="8" required>-->
+<!--        </fieldset>-->
+<!--        </br>-->
+<!--        <fieldset>-->
+<!--            <textarea placeholder="Type summary here...." tabindex="9" required></textarea>-->
+<!--        </fieldset>-->
+<!--        <fieldset>-->
+<!--            <input placeholder="Summary font size" type="text" tabindex="5" required autofocus>-->
+<!--        </fieldset>-->
+<!--        <fieldset>-->
+<!--            <input placeholder="Summary font color" type="text" tabindex="6" required>-->
+<!--        </fieldset>-->
+<!--        <fieldset>-->
+<!--            <input placeholder="Summary background color" type="text" tabindex="7" required>-->
+<!--        </fieldset>-->
+<!--        <fieldset>-->
+<!--            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>-->
+<!--        </fieldset>-->
+<!--    </form>-->
+<!--</div>-->

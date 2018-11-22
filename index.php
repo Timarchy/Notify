@@ -61,7 +61,3 @@ include APPLICATION_PATH . '/includes/header.php';
 
     </div>
 
-<?php
-var_dump($_SESSION['username']);
-?>
-
