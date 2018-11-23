@@ -52,8 +52,8 @@ if(isset($_POST['create_notif'])){
         echo "This field should not be empty";
     }else {
 
-        $query = "INSERT INTO notifications(user_id, status, state, create_date, publish_date, modification_last)";
-        $query .= "VALUES ('{$current_user_id}', '0', '1', now(), '-', '-')";
+        $query = "INSERT INTO notifications(user_id, status, state, create_date)";
+        $query .= "VALUES ('{$current_user_id}', '0', '1', now())";
 
         $create_notif = mysqli_query($connection, $query);
         confirm($create_notif);

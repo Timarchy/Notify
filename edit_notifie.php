@@ -75,24 +75,27 @@ if(isset($_POST['edit_notif'])){
         echo "Fields should not be empty";
     }else {
 
-        $query = "UPDATE notifications WHERE id = {$the_notify_id} SET ";
+        $query = "UPDATE notifications SET ";
         $query .= "user_id = '{$user_id}', ";
         $query .= "status = '0', ";
         $query .= "state = '1', ";
         $query .= "create_date = '{$template_creation_date}', ";
-        $query .= "publish_date = now(), ";
-        $query .= "modification_last = now()";
+        $query .= "modification_last = now() WHERE id = {$the_notify_id}";
 
         $update_notif = mysqli_query($connection, $query);
         confirm($update_notif);
 
 
-        $fpath = "/var/www/html/NotifBar/Json/";
+        $fpath = "/var/www/html/NotifBar/Json/" . $the_notify_id . "/data.json";
+        $encodedData = json_encode($notif_edit_form_resut);
 
-        mkdir($fpath . $the_notify_id, 0777);  // JSON ID MATTER HERE IF BUG LINKED TO PATH ID <============================= HERE
-        $fcreation = fopen("/var/www/html/NotifBar/Json/" . $template_id . '/data.json', 'w');
-        fwrite($fcreation, json_encode($notif_edit_form_resut));
-        fclose($fcreation);
+
+        file_put_contents($fpath, $encodedData);
+
+//        mkdir($fpath . $the_notify_id, 0777);  // JSON ID MATTER HERE IF BUG LINKED TO PATH ID <============================= HERE
+//        $fcreation = fopen("/var/www/html/NotifBar/Json/" . $template_id . '/data.json', 'w');
+//        fwrite($fcreation, json_encode($notif_edit_form_resut));
+//        fclose($fcreation);
 
     }
 

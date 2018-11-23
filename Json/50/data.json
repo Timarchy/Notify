@@ -1,11 +1,11 @@
 {
-  "label_text": "Official Title",
-  "label_text_fsize": "20px",
-  "label_text_color": "#ff0000",
-  "label_background": "#ffffff",
-  "sponsor_url": "da.com",
-  "summary": "This is not a drill! This is not a drill! This is not a drill! This is not a drill! This is not a drill! This is not a drill! This is not a drill! This is not a drill! This is not a drill! This is not a drill! ",
-  "summary_text_fsize": "12px",
+  "label_text": "da",
+  "label_text_fsize": "16px",
+  "label_text_color": "#000000",
+  "label_background": "#bb9d9d",
+  "sponsor_url": "nunu",
+  "summary": "agdfzhdjhkgkjkfhdfsaDFGHJJGJHFDSAFGHJHGJFDSASFGHJKHKJHGFDSASdfghjklgfdsafghj",
+  "summary_text_fsize": "14px",
   "summary_text_color": "#000000",
-  "summary_background": "#ffffff"
+  "summary_background": "#ae8181"
 }

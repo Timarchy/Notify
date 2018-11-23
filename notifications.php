@@ -4,7 +4,11 @@ include "includes/header.php";
 include "includes/navbar.php";
 
 ?>
-
+<style type="text/css">
+    body{
+        height:unset!important;
+    }
+</style>
 <div id="page_wrapper">
     <div class="container_fluid">
         <table class="table table-bordered table-hover">
@@ -51,7 +55,6 @@ include "includes/navbar.php";
                 $template_modification = $row['modification_last'];
                 $template_published = $row['publish_date'];
 
-                //  CONTENT NEEDED FROM JSON
 
                 echo "<tr>";
                 echo "<td>$template_id</td>";
