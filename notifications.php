@@ -8,6 +8,7 @@ include "includes/header_general.php";
         height:unset!important;
     }
 </style>
+<!--nitification list-->
 <div id="page_wrapper">
     <div class="container_fluid">
         <table class="table table-bordered table-hover">
@@ -24,7 +25,7 @@ include "includes/header_general.php";
             <tbody>
 
             <?php
-
+            // delete button action - NOT DELETING JSON DIRECTORY YET - needs fixing
             if(isset($_GET['delete'])){
 
                 echo 'Supp';
@@ -34,10 +35,13 @@ include "includes/header_general.php";
                 $query = "DELETE FROM notifications WHERE id = {$the_notif_id} ";
                 $delete_query = mysqli_query($connection, $query);
 
+                $fpath = "/var/www/html/NotifBar/Json/";
+                system("sudo rm -rf " . $the_notif_id);
+
             }
 
 
-
+            //storing current user
             $current_user_id = $_SESSION['user_id'];
             //    var_dump($current_user_id);
 
@@ -48,6 +52,7 @@ include "includes/header_general.php";
 
             while($row = mysqli_fetch_assoc($select_template)) {
 
+                // working data form DB + edit & delete buttons
                 $template_id = $row['id'];
                 $template_state = $row['state'];
                 $template_creation_date = $row['create_date'];

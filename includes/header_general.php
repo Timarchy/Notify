@@ -57,7 +57,7 @@ if( !isset($_SESSION['user_id']) ){
     exit();
 }
 
-include "includes/navbar.php";
-var_dump($_SESSION['username']);
+//include "includes/navbar.php";
+//var_dump($_SESSION['username']);
 
 ?>

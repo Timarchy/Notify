@@ -18,6 +18,7 @@ $selected_post_by_id = mysqli_query($connection, $query);
 
 while($row = mysqli_fetch_assoc($selected_post_by_id)){
 
+    //working data from database
     $template_id = $row['id'];
     $user_id = $row['user_id'];
     $template_state = $row['state'];
@@ -32,7 +33,7 @@ if(isset($_POST['edit_notif'])){
 
     $notif_edit_form_resut = [];
 
-
+    //working data from form
     $label_text = $_POST['label'];
     $label_text_font_size = $_POST['label_text_fsize'];
     $label_text_color = $_POST['label_text_fcolor'];
@@ -45,7 +46,7 @@ if(isset($_POST['edit_notif'])){
     $summary_text_color = $_POST['summary_text_fcolor'];
     $summary_background = $_POST['summary_text_bcolor'];
 
-
+    // store data for json file
     $notif_edit_form_resut = [
 
         "label_text" => $label_text,
@@ -65,16 +66,16 @@ if(isset($_POST['edit_notif'])){
 
     $current_user_id = $_SESSION['user_id'];
 
-
+    //secure inserted data to prevent sql injections
     $label_text = mysqli_real_escape_string($connection, $label_text);
     $sponsor_url = mysqli_real_escape_string($connection, $sponsor_url);
     $summary = mysqli_real_escape_string($connection, $summary);
 
-
+    // check if fields not empty then proceed
     if ($label_text == '' || empty($label_text) || $sponsor_url == '' || empty($sponsor_url) || $summary == '' || empty($summary)) {
         echo "Fields should not be empty";
     }else {
-
+        //update notifier into database table
         $query = "UPDATE notifications SET ";
         $query .= "user_id = '{$user_id}', ";
         $query .= "status = '0', ";
@@ -86,10 +87,9 @@ if(isset($_POST['edit_notif'])){
         confirm($update_notif);
 
 
+        // overwrite the existing json file
         $fpath = "/var/www/html/NotifBar/Json/" . $the_notify_id . "/data.json";
         $encodedData = json_encode($notif_edit_form_resut);
-
-
         file_put_contents($fpath, $encodedData);
 
 //        mkdir($fpath . $the_notify_id, 0777);  // JSON ID MATTER HERE IF BUG LINKED TO PATH ID <============================= HERE
@@ -106,7 +106,7 @@ if(isset($_POST['edit_notif'])){
 ?>
 
 
-
+<!--create and edit form for notifier-->
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -116,6 +116,7 @@ if(isset($_POST['edit_notif'])){
                     <form method="post" id="contactFrm" name="contactFrm">
                         <input type="text" required="" placeholder="Label text" value="" id="labelText" name="label" class="txt">
                         <select name="label_text_fsize" id="label_font_size" value="" style="margin-bottom: 10px;">
+                            <!-- loop the given f-sizes -->
                             <?php
                             $fonts = ["14px", "16px", "18px", "20px"];
 
@@ -140,6 +141,7 @@ if(isset($_POST['edit_notif'])){
 
                         <textarea required="" id="summary" placeholder="Demo summary" name="summary" type="text" class="txt_3"></textarea>
                         <select name="summary_font_size" id="summary_font_size" value="" style="margin-bottom: 10px;">
+                            <!-- loop the given f-sizes -->
                             <?php
                             $fonts = ["12px", "14px", "16px"];
 
@@ -173,8 +175,10 @@ if(isset($_POST['edit_notif'])){
 </div>
 
 <script>
+    // storing the value of te current logged user ( already saved in a $_SESSIONS the in a PHP variable)
     var notificationId = "<?php echo $the_notify_id ?>";
 
+    //selection the needed divs to latter target for populating with the wanted style and data
     var labelText = document.getElementById('labelText');
     var label_text_fsize = document.getElementById('label_font_size');
     var label_text_color = document.getElementById('label_text_color');
@@ -185,7 +189,7 @@ if(isset($_POST['edit_notif'])){
     var summary_text_color = document.getElementById('summaryTextColor');
     var summary_background = document.getElementById('summary_text_bcolor');
 
-
+    // requests existing data from json file to populate the edit page with the edited notifier
     var xhr = new XMLHttpRequest();
     var url = "./Json/" + notificationId + "/data.json";
     xhr.open("GET", url, true);
@@ -205,6 +209,7 @@ if(isset($_POST['edit_notif'])){
             summary_text_fsize.value = parsedJSON.summary_text_fsize;
             summary_text_color.value = parsedJSON.summary_text_color;
             summary_background.value = parsedJSON.summary_background;
+
         }
     };
 
@@ -212,10 +217,9 @@ if(isset($_POST['edit_notif'])){
 
 
 
-
+// for the color picker: display the hexdecimal code for the color picked - needs work to display it right after selecting it
     var colorSummary = document.getElementById('colorSummary');
     var summaryTextColor = document.getElementById('summaryTextColor');
-
     summaryTextColor.addEventListener('focusout', function() {
         colorSummary.innerText = summaryTextColor.value;
     })

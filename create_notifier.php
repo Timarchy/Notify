@@ -41,25 +41,26 @@ if(isset($_POST['create_notif'])){
 
     $current_user_id = $_SESSION['user_id'];
 
+    // safe from sql injection
     $label_text = mysqli_real_escape_string($connection, $label_text);
     $sponsor_url = mysqli_real_escape_string($connection, $sponsor_url);
     $summary = mysqli_real_escape_string($connection, $summary);
 
 
-
+    // check if fields not empty
     if ($label_text == '' || empty($label_text) || $sponsor_url == '' || empty($sponsor_url) || $summary == '' || empty($summary)) {
         echo "This field should not be empty";
     }else {
 
+        //insert new notify into DB
         $query = "INSERT INTO notifications(user_id, status, state, create_date)";
         $query .= "VALUES ('{$current_user_id}', '0', '1', now())";
 
         $create_notif = mysqli_query($connection, $query);
         confirm($create_notif);
 
-
+        //create and store notify's style - json directory
         $fpath = "/var/www/html/NotifBar/Json/";
-
         mkdir($fpath . mysqli_insert_id($connection), 0777);
         $fcreation = fopen("/var/www/html/NotifBar/Json/" . mysqli_insert_id($connection) . '/data.json', 'w');
         fwrite($fcreation, json_encode($notif_form_resut));
@@ -70,7 +71,7 @@ if(isset($_POST['create_notif'])){
 }
 
 ?>
-
+<!--create notifier form ( used for edit too )-->
 <div class="container">
     <div class="row">
         <div class="col-md-4">
