@@ -1,6 +1,6 @@
 <?php
 
-include "includes/header.php";
+include "includes/header_general.php";
 
 ?>
 
@@ -157,6 +157,7 @@ if(isset($_POST['edit_notif'])){
                         <div>
                             <input type="color" id="summary_text_bcolor" name="summary_text_bcolor" value="#dbd1d1">
                             <label for="head">Background</label>
+                            <span id="colorBackSummary"></span>
                         </div>
 
 

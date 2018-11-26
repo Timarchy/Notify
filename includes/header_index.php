@@ -2,6 +2,7 @@
 include "includes/db.php";
 include "functions.php";
 
+
 session_start();
 ?>
 
@@ -49,5 +50,6 @@ session_start();
 
     </head>
 <?php
-var_dump($_SESSION['username']);
+include "includes/navbar.php";
+var_dump(isset($_SESSION['username']));
 ?>

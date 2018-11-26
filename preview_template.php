@@ -1,5 +1,5 @@
 <?php
-include "includes/header.php";
+include "includes/header_general.php";
 ?>
 
 <div id="timi_special_div">

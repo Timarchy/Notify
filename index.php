@@ -1,12 +1,8 @@
 <?php
 include 'init.php';
-include APPLICATION_PATH . '/includes/header.php';
+include APPLICATION_PATH . '/includes/header_index.php';
 ?>
 <body>
-
-    <?php
-    include "includes/navbar.php";
-    ?>
 
     <div class="container">
 

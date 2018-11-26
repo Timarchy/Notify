@@ -1,6 +1,5 @@
 <?php
-include "includes/header.php";
-include "includes/navbar.php";
+include "includes/header_general.php";
 ?>
 
 <?php
@@ -123,7 +122,7 @@ if(isset($_POST['create_notif'])){
                             <label for="head">Background</label>
                         </div>
 
-                        <input type="submit" value="Save" name="create_notif" class="txt2">
+                        <input type="submit" value="Save"  name="create_notif" class="txt2">
                     </form>
                     <div><a href="index.php">HOME</a></div>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 
-include "includes/header.php";
+include "includes/header_index.php";
 
 ?>
 
@@ -20,7 +20,6 @@ if(isset($_POST['login'])){
     if(!$select_user_query){
         die("QUERY FAILED" . mysqli_error($connection));
     }
-
 
     while($row = mysqli_fetch_array($select_user_query)){
 
@@ -53,8 +52,6 @@ if(isset($_POST['login'])){
 
         header("Location: login_page.php");
     }
-
-
 
 }
 

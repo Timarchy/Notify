@@ -1,6 +1,6 @@
 <?php
 include "init.php";
-include "includes/header.php";
+include "includes/header_general.php";
 include "includes/navbar.php";
 ?>
 
