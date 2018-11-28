@@ -129,10 +129,12 @@ if(isset($_POST['edit_notif'])){
                         <div>
                             <input type="color" id="label_text_color" name="label_text_fcolor" value="#5b5b5b">
                             <label for="head">Label-text</label>
+                            <span id="labelTextColor"></span>
                         </div>
                         <div>
                             <input type="color" id="label_background" name="label_text_bcolor" value="#ffffff">
                             <label for="head">Label-background</label>
+                            <span id="colorTextBground"></span>
                         </div>
 
 
@@ -189,7 +191,15 @@ if(isset($_POST['edit_notif'])){
     var summary_text_color = document.getElementById('summaryTextColor');
     var summary_background = document.getElementById('summary_text_bcolor');
 
-    // requests existing data from json file to populate the edit page with the edited notifier
+    var colorTextBground = document.getElementById("colorTextBground");
+    var labelTextColor = document.getElementById("labelTextColor");
+    var summaryTextColor = document.getElementById('summaryTextColor');
+    var colorSummary = document.getElementById('colorSummary');
+    var summary_text_bcolor = document.getElementById("summary_text_bcolor");
+    var colorBackSummary = document.getElementById("colorBackSummary");
+
+
+    // requests existing data from json file to populate the edit page with the current notifier to edit
     var xhr = new XMLHttpRequest();
     var url = "./Json/" + notificationId + "/data.json";
     xhr.open("GET", url, true);
@@ -216,12 +226,30 @@ if(isset($_POST['edit_notif'])){
     xhr.send();
 
 
+    // for the color picker: display the hexadecimal code for the color picked - needs work to display it right after selecting it
 
-// for the color picker: display the hexdecimal code for the color picked - needs work to display it right after selecting it
-    var colorSummary = document.getElementById('colorSummary');
-    var summaryTextColor = document.getElementById('summaryTextColor');
+    // declared above // var label_text_color = document.getElementById("label_text_color");
+    label_text_color.addEventListener('focusout', function() {
+        labelTextColor.innerText = label_text_color.value;
+        labelTextColor.setAttribute("style", "border: solid 1px grey;padding: 4px 8px;border-radius: 3px;")
+    });
+
+    // declared above // var label_background = document.getElementById("label_background");
+    label_background.addEventListener('focusout', function() {
+        colorTextBground.innerText = label_background.value;
+        colorTextBground.setAttribute("style", "border: solid 1px grey;padding: 4px 8px;border-radius: 3px;")
+    });
+
     summaryTextColor.addEventListener('focusout', function() {
         colorSummary.innerText = summaryTextColor.value;
-    })
+        colorSummary.setAttribute("style", "border: solid 1px grey;padding: 4px 8px;border-radius: 3px;")
+    });
+
+    summary_text_bcolor.addEventListener('focusout', function() {
+        colorBackSummary.innerText = summary_text_bcolor.value;
+        colorBackSummary.setAttribute("style", "border: solid 1px grey;padding: 4px 8px;border-radius: 3px;")
+    });
+
+
 
 </script>

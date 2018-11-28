@@ -68,7 +68,7 @@ if(isset($_POST['login'])){
     <div class="login-form">
         <div class="main-div">
             <div class="panel">
-                <h2>Admin Login</h2>
+                <h2>Login</h2>
                 <p>Please enter your email and password</p>
             </div>
             <form id="Login" method="post">

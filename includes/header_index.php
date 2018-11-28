@@ -50,6 +50,6 @@ session_start();
 
     </head>
 <?php
-//include "includes/navbar.php";
+include "includes/navbar.php";
 //var_dump(isset($_SESSION['username']));
 ?>

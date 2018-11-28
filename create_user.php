@@ -1,7 +1,6 @@
 <?php
 include "init.php";
-include "includes/header_general.php";
-include "includes/navbar.php";
+include "includes/header_index.php";
 ?>
 
 <?php
@@ -13,8 +12,6 @@ if(isset($_POST['create_user'])){
 
     $user_email = $_POST['email'];
     $user_password = $_POST['password'];
-
-
 
     $query = 'INSERT INTO users(user_name, email, username, password, role, status) ';
     $query .= "VALUES('{$user_name}','{$user_email}','{$username}','{$user_password}', '0','1')";
