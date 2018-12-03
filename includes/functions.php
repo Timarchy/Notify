@@ -6,8 +6,6 @@ function confirm($result){
 
     if(!$result){
         die("QUERY FAILED ." . mysqli_error($connection));
-    }else {
-        echo "GOOD TO GO!!!";
     }
 
 }

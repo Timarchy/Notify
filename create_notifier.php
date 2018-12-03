@@ -60,11 +60,13 @@ if(isset($_POST['create_notif'])){
         confirm($create_notif);
 
         //create and store notify's style - json directory
-        $fpath = "/var/www/html/NotifBar/Json/";
+        $fpath = APPLICATION_PATH . "/Json/";
         mkdir($fpath . mysqli_insert_id($connection), 0777);
-        $fcreation = fopen("/var/www/html/NotifBar/Json/" . mysqli_insert_id($connection) . '/data.json', 'w');
+        $fcreation = fopen( APPLICATION_PATH . "/Json/" . mysqli_insert_id($connection) . '/data.json', 'w');
         fwrite($fcreation, json_encode($notif_form_resut));
         fclose($fcreation);
+
+        header( "Location: notifications.php");
 
     }
 
@@ -82,7 +84,7 @@ if(isset($_POST['create_notif'])){
                         <input type="text" required="" placeholder="Label text" value="" name="label" class="txt">
                         <select name="label_text_fsize" id="label_font_size" style="margin-bottom: 10px;">
                             <?php
-                            $fonts = ["14px", "16px", "18px", "20px"];
+                            $fonts = ["16px", "18px", "20px", "22px"];
 
                             forEach($fonts as $font) {
                                 echo "<option value= '{$font}'>$font</option>";
@@ -106,7 +108,7 @@ if(isset($_POST['create_notif'])){
 
                         <select name="summary_font_size" id="summary_font_size" style="margin-bottom: 10px;">
                             <?php
-                            $fonts = ["12px", "14px", "16px"];
+                            $fonts = ["12px", "14px", "16px", "18px"];
 
                             forEach($fonts as $font) {
                                 echo "<option value= '{$font}'>$font</option>";

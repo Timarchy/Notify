@@ -1,5 +1,10 @@
 * {
     box-sizing: border-box;
+    font-size:16px;
+    font-family: monospace;
+}
+body {
+    padding:10px;
 }
 .main_containter {
     padding:60px;
@@ -33,6 +38,18 @@ tr {
 }
 .container_fluid{
     padding:0 10px;
+}
+.fontSize_1 {
+    font-size: 30px;
+}
+.fontSize_2 {
+    font-size:18px;
+}
+.fontSize_3 {
+    font-size:16px;
+}
+.nav-item {
+    margin-right: 20px;
 }
 
 

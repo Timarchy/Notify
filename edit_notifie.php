@@ -4,8 +4,6 @@ include "includes/header_general.php";
 
 ?>
 
-
-
 <?php
 
 if(isset($_GET['id'])){
@@ -27,7 +25,6 @@ while($row = mysqli_fetch_assoc($selected_post_by_id)){
     $template_published = $row['publish_date'];
 
 }
-
 
 if(isset($_POST['edit_notif'])){
 
@@ -63,7 +60,6 @@ if(isset($_POST['edit_notif'])){
 
     ];
 
-
     $current_user_id = $_SESSION['user_id'];
 
     //secure inserted data to prevent sql injections
@@ -86,25 +82,16 @@ if(isset($_POST['edit_notif'])){
         $update_notif = mysqli_query($connection, $query);
         confirm($update_notif);
 
-
         // overwrite the existing json file
-        $fpath = "/var/www/html/NotifBar/Json/" . $the_notify_id . "/data.json";
+        $fpath = APPLICATION_PATH . "/Json/" . $the_notify_id . "/data.json";
         $encodedData = json_encode($notif_edit_form_resut);
         file_put_contents($fpath, $encodedData);
-
-//        mkdir($fpath . $the_notify_id, 0777);  // JSON ID MATTER HERE IF BUG LINKED TO PATH ID <============================= HERE
-//        $fcreation = fopen("/var/www/html/NotifBar/Json/" . $template_id . '/data.json', 'w');
-//        fwrite($fcreation, json_encode($notif_edit_form_resut));
-//        fclose($fcreation);
 
     }
 
 }
 
-
-
 ?>
-
 
 <!--create and edit form for notifier-->
 <div class="container">
@@ -137,9 +124,7 @@ if(isset($_POST['edit_notif'])){
                             <span id="colorTextBground"></span>
                         </div>
 
-
                         <input type="text" id="sponsor_url" required="" placeholder="Sponsor's link" value="" name="url" class="txt">
-
 
                         <textarea required="" id="summary" placeholder="Demo summary" name="summary" type="text" class="txt_3"></textarea>
                         <select name="summary_font_size" id="summary_font_size" value="" style="margin-bottom: 10px;">
@@ -164,14 +149,13 @@ if(isset($_POST['edit_notif'])){
                             <span id="colorBackSummary"></span>
                         </div>
 
-
                         <a href="notifications.php">
                             <input type="submit" value="Save" name="edit_notif" class="txt2">
                         </a>
                     </form>
                     <div><a href="index.php">HOME</a></div>
                 </div>
-            </div>
+            </div>id
         </div
     </div>
 </div>
@@ -198,7 +182,6 @@ if(isset($_POST['edit_notif'])){
     var summary_text_bcolor = document.getElementById("summary_text_bcolor");
     var colorBackSummary = document.getElementById("colorBackSummary");
 
-
     // requests existing data from json file to populate the edit page with the current notifier to edit
     var xhr = new XMLHttpRequest();
     var url = "./Json/" + notificationId + "/data.json";
@@ -206,7 +189,7 @@ if(isset($_POST['edit_notif'])){
 
     xhr.onloadend = function() {
         var parsedJSON = JSON.parse(xhr.responseText);
-        console.log(parsedJSON);
+        // console.log(parsedJSON);
         if ( xhr.status === 200) {
             labelText.value = parsedJSON.label_text;
             console.log(parsedJSON.label_text);
@@ -225,31 +208,22 @@ if(isset($_POST['edit_notif'])){
 
     xhr.send();
 
-
     // for the color picker: display the hexadecimal code for the color picked - needs work to display it right after selecting it
-
-    // declared above // var label_text_color = document.getElementById("label_text_color");
     label_text_color.addEventListener('focusout', function() {
         labelTextColor.innerText = label_text_color.value;
         labelTextColor.setAttribute("style", "border: solid 1px grey;padding: 4px 8px;border-radius: 3px;")
     });
-
-    // declared above // var label_background = document.getElementById("label_background");
     label_background.addEventListener('focusout', function() {
         colorTextBground.innerText = label_background.value;
         colorTextBground.setAttribute("style", "border: solid 1px grey;padding: 4px 8px;border-radius: 3px;")
     });
-
     summaryTextColor.addEventListener('focusout', function() {
         colorSummary.innerText = summaryTextColor.value;
         colorSummary.setAttribute("style", "border: solid 1px grey;padding: 4px 8px;border-radius: 3px;")
     });
-
     summary_text_bcolor.addEventListener('focusout', function() {
         colorBackSummary.innerText = summary_text_bcolor.value;
         colorBackSummary.setAttribute("style", "border: solid 1px grey;padding: 4px 8px;border-radius: 3px;")
     });
-
-
 
 </script>
