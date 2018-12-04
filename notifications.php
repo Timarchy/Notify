@@ -28,8 +28,6 @@ include "includes/header_general.php";
             // delete button action - NOT DELETING JSON DIRECTORY YET - needs fixing
             if(isset($_GET['delete'])){
 
-//              echo 'Supp';
-
                 $the_notif_id = $_GET['delete'];
 
                 $query = "DELETE FROM notifications WHERE id = {$the_notif_id} ";
@@ -83,16 +81,24 @@ include "includes/header_general.php";
 
                 echo "<td>$template_modification</td>";
                 echo "<td>$template_published</td>";
+                echo "<td><input id='templateId{$template_id}' type='text' value='<script language=\"JavaScript\" src=\"embed.js\"></script>
+<script>var embed = new Embed({$template_id});</script>'  src='embed.js'><button onclick='copyScript({$template_id})' style='padding:0 10px;margin-left:10px;'>Get Embed</button></td>";
+                echo "<td><a href='preview_template.php?id={$template_id}'>Preview</a></td>";
                 echo "<td><a href='edit_notifie.php?id={$template_id}'>Edit</a></td>";
                 echo "<td><a href='notifications.php?delete={$template_id}'>Delete</a></td>";
 
                 echo "<tr>";
 
-
-
             }
             ?>
-
+            <script>
+                function copyScript(ev){
+                    var copyString = document.getElementById("templateId" + ev);
+                    copyString.select();
+                    document.execCommand("copy");
+                    console.log(document);
+                }
+            </script>
             </tbody>
         </table>
     </div>
