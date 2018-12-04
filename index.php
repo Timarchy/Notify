@@ -2,7 +2,7 @@
 include 'init.php';
 include APPLICATION_PATH . '/includes/header_index.php';
 ?>
-<body>
+<body style="height: unset;">
 
     <div class="container">
 

@@ -28,15 +28,17 @@ include "includes/header_general.php";
             // delete button action - NOT DELETING JSON DIRECTORY YET - needs fixing
             if(isset($_GET['delete'])){
 
-                echo 'Supp';
+//              echo 'Supp';
 
                 $the_notif_id = $_GET['delete'];
 
                 $query = "DELETE FROM notifications WHERE id = {$the_notif_id} ";
                 $delete_query = mysqli_query($connection, $query);
+                $fpath = APPLICATION_PATH . "/Json/";
+                unlink($fpath . $the_notif_id . "/data.json");
+                rmdir($fpath .$the_notif_id);
 
-                $fpath = "/var/www/html/NotifBar/Json/";
-                system("sudo rm -rf " . $the_notif_id);
+                header( "Location: notifications.php");
 
             }
 

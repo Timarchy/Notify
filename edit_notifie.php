@@ -155,7 +155,7 @@ if(isset($_POST['edit_notif'])){
                     </form>
                     <div><a href="index.php">HOME</a></div>
                 </div>
-            </div>id
+            </div>
         </div
     </div>
 </div>
