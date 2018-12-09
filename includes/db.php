@@ -2,8 +2,8 @@
 include 'error_syntax.php';
 
 $db['db_host'] = 'localhost';
-$db['db_user'] = 'timi';
-$db['db_pass'] = 'timi';
+$db['db_user'] = 'root';
+$db['db_pass'] = '';
 $db['db_name'] = 'notifyBar';
 
 foreach($db as $key => $value){

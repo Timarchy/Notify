@@ -32,13 +32,10 @@ if(isset($_POST['login'])){
     }
 
     if($username !== $db_username && $password !== $db_user_password){
-        echo "User not found!";
 
         header("Location: login_page.php");
 
     }elseif ($username == $db_username && $password == $db_user_password){
-
-        echo "USER FOUND!";
 
         $_SESSION['username'] = $db_username;
         $_SESSION['user_name'] = $db_user_name;
@@ -85,7 +82,7 @@ if(isset($_POST['login'])){
 
                 </div>
                 <div class="forgot">
-                    <a href="reset.html">Forgot password?</a>
+                    <a href="reset.html">Forgot password?(not working)</a>
                 </div>
                 <button type="submit" name="login" class="btn btn-primary">Login</button>
                 <div class="forgot">

@@ -1,4 +1,3 @@
-
 class Embed {
     constructor(templateId) {
 
@@ -38,13 +37,11 @@ class Embed {
                 crtDivLabel.className = "label_div";
                 var crtDivLabelInner = document.createElement("div");
                 crtDivLabelInner.setAttribute("id", "label_inner_div");
-                crtDivLabelInner.setAttribute("style", "font-size:" + label_text_fsize + ";color:" + label_text_color + ";");
                 crtDivLabelInner.className = "label_inner_div";
                 var crtLabelA = document.createElement("a");
                 crtLabelA.setAttribute("id", "labelParagraph");
                 crtLabelA.setAttribute("href", sponsor_url);
-                // crtLabelA.setAttribute("type", "button");
-                crtLabelA.setAttribute("style", "padding:3px 6px;border:0;border-radius:3px;text-decoration:none;background:" + label_background + ";");
+                crtLabelA.setAttribute("style", "padding:3px 6px;border:0;border-radius:3px;text-decoration:none;background:" + label_background + ";font-size:" + label_text_fsize + ";color:" + label_text_color + ";");
                 crtLabelA.className = "notifyParagraph";
                 var crtDivSummary = document.createElement("div");
                 crtDivSummary.setAttribute("id", "summary_div");
@@ -79,18 +76,15 @@ class Embed {
                 mainDiv.appendChild(crtAnchor);
                 crtAnchor.addEventListener("click", function(){
                     var element = crtAnchor.parentNode;
-                    // console.log(element);
                     element.parentNode.removeChild(element);
-                    // console.log(templateId);
                 });
-                // console.log(crtAnchor.parentNode);
                 crtAnchor.innerText = "x";
 
             }
 
         };
 
-        xmlhttp.open("GET", "./Json/" + templateId + "/data.json", true);
+        xmlhttp.open("GET", "/Json/" + templateId + "/data.json", true);
         xmlhttp.send();
 
     }

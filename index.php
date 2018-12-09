@@ -56,4 +56,17 @@ include APPLICATION_PATH . '/includes/header_index.php';
         </footer>
 
     </div>
+  
+  <?php 
+  
+//   print_r(PDO::getAvailableDrivers());
+  
+  try{
+  $handler = new PDO('mysql:host=127.0.0.1;dbname=notifyBarr', 'root', '');
+  $handler->setAttribute(PDO::ATTR_ERRMODE, ATTR_ERRMODE_EXCEPTION);
+  }catch(PDOException $e){
+    echo 'caught';
+  }
+  
+  ?>
 

@@ -19,6 +19,8 @@ if(isset($_POST['create_notif'])){
     $summary_text_font_size = $_POST['summary_font_size'];
     $summary_text_color = $_POST['summary_text_fcolor'];
     $summary_background = $_POST['summary_text_bcolor'];
+    $summary_style = $_POST['summary_style'];
+    $summary_family = $_POST['summary_family'];
 
 
     $notif_form_resut = [
@@ -27,13 +29,17 @@ if(isset($_POST['create_notif'])){
         "label_text_fsize" => $label_text_font_size,
         "label_text_color" => $label_text_color,
         "label_background" => $label_background,
+        "label_style" => $label_style,
+        "label_family" => $label_family,
 
         "sponsor_url" => $sponsor_url,
 
         "summary" => $summary,
         "summary_text_fsize" => $summary_text_font_size,
         "summary_text_color" => $summary_text_color,
-        "summary_background" => $summary_background
+        "summary_background" => $summary_background,
+        "summary_style" => $summary_style,
+        "summary_family" => $summary_family     
 
     ];
 
@@ -92,6 +98,26 @@ if(isset($_POST['create_notif'])){
                             }
                             ?>
                         </select>
+                        <select name="label_style" id="label_style" style="margin-bottom: 10px;">
+                            <?php
+                            $styles = ["oblique", "normal", "italic", "bold"];
+
+                            forEach($styles as $style) {
+                                echo "<option value= '{$style}'>$style</option>";
+
+                            }
+                            ?>
+                        </select>
+                        <select name="label_family" id="label_family" style="margin-bottom: 10px;">
+                            <?php
+                            $failies = ["sans-serif", "serif", "cursive", "system-ui"];
+
+                            forEach($failies as $family) {
+                                echo "<option value= '{$family}'>$family</option>";
+
+                            }
+                            ?>
+                        </select>
                         <div>
                             <input type="color" id="" name="label_text_fcolor" value="#5b5b5b">
                             <label for="head">Labe-text</label>
@@ -112,6 +138,26 @@ if(isset($_POST['create_notif'])){
 
                             forEach($fonts as $font) {
                                 echo "<option value= '{$font}'>$font</option>";
+
+                            }
+                            ?>
+                        </select>
+                        <select name="summary_style" id="summary_style" style="margin-bottom: 10px;">
+                            <?php
+                            $styles = ["oblique", "normal", "italic", "bold"];
+
+                            forEach($styles as $style) {
+                                echo "<option value= '{$style}'>$style</option>";
+
+                            }
+                            ?>
+                        </select>
+                        <select name="summary_family" id="summary_family" style="margin-bottom: 10px;">
+                            <?php
+                            $failies = ["sans-serif", "serif", "cursive", "system-ui"];
+
+                            forEach($failies as $family) {
+                                echo "<option value= '{$family}'>$family</option>";
 
                             }
                             ?>

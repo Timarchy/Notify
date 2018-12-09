@@ -88,7 +88,7 @@ if(isset($_POST['edit_notif'])){
         file_put_contents($fpath, $encodedData);
 
     }
-
+    header( "Location: notifications.php");
 }
 
 ?>
@@ -105,10 +105,30 @@ if(isset($_POST['edit_notif'])){
                         <select name="label_text_fsize" id="label_font_size" value="" style="margin-bottom: 10px;">
                             <!-- loop the given f-sizes -->
                             <?php
-                            $fonts = ["14px", "16px", "18px", "20px"];
+                            $fonts = ["12", "14px", "16px", "18px", "20px"];
 
                             forEach($fonts as $font) {
                                 echo "<option value= '{$font}'>$font</option>";
+
+                            }
+                            ?>
+                        </select>
+                        <select name="label_style" id="label_style" style="margin-bottom: 10px;">
+                            <?php
+                            $styles = ["oblique", "normal", "italic", "bold"];
+
+                            forEach($styles as $style) {
+                                echo "<option value= '{$style}'>$style</option>";
+
+                            }
+                            ?>
+                        </select>
+                        <select name="label_family" id="label_family" style="margin-bottom: 10px;">
+                            <?php
+                            $failies = ["sans-serif", "serif", "cursive", "system-ui"];
+
+                            forEach($failies as $family) {
+                                echo "<option value= '{$family}'>$family</option>";
 
                             }
                             ?>
@@ -130,11 +150,30 @@ if(isset($_POST['edit_notif'])){
                         <select name="summary_font_size" id="summary_font_size" value="" style="margin-bottom: 10px;">
                             <!-- loop the given f-sizes -->
                             <?php
-                            $fonts = ["12px", "14px", "16px"];
+                            $fonts = ["12", "14px", "16px", "18px", "20px"];
 
                             forEach($fonts as $font) {
                                 echo "<option value= '{$font}'>$font</option>";
 
+                            }
+                            ?>
+                        </select>
+                        <select name="summary_style" id="summary_style" style="margin-bottom: 10px;">
+                            <?php
+                            $styles = ["oblique", "normal", "italic", "bold"];
+
+                            forEach($styles as $style) {
+                                echo "<option value= '{$style}'>$style</option>";
+
+                            }
+                            ?>
+                        </select>
+                        <select name="summary_family" id="summary_family" style="margin-bottom: 10px;">
+                            <?php
+                            $failies = ["sans-serif", "serif", "cursive", "system-ui"];
+
+                            foreach($failies as $family) {
+                                echo "<option value= '{$family}'>$family</option>";
                             }
                             ?>
                         </select>
@@ -169,11 +208,15 @@ if(isset($_POST['edit_notif'])){
     var label_text_fsize = document.getElementById('label_font_size');
     var label_text_color = document.getElementById('label_text_color');
     var label_background = document.getElementById('label_background');
+    var label_style = document.getElementById('label_style');
+    var label_family = document.getElementById('label_family');
     var sponsor_url = document.getElementById('sponsor_url');
     var summary = document.getElementById('summary');
     var summary_text_fsize = document.getElementById('summary_font_size');
     var summary_text_color = document.getElementById('summaryTextColor');
     var summary_background = document.getElementById('summary_text_bcolor');
+    var summary_style = document.getElementById('summary_style');
+    var summary_family = document.getElementById('summary_family');
 
     var colorTextBground = document.getElementById("colorTextBground");
     var labelTextColor = document.getElementById("labelTextColor");

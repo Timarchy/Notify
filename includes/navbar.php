@@ -11,7 +11,6 @@
             echo '<li class="nav-item"><a class="nav-link" href="log_out.php">Log out</a></li>';
             echo '<li class="nav-item"><a class="nav-link" href="create_notifier.php">Create Notify</a></li>';
             echo '<li class="nav-item"><a class="nav-link" href="notifications.php">Notify list</a></li>';
-            echo '<li class="nav-item"><a class="nav-link" href="preview_template.php">Preview Template</a></li>';
             echo "<li class='nav-item active' style='font-weight:700;'><a class='nav-link'>Hello {$_SESSION['user_name']}</a></li>";
         }
         ?>

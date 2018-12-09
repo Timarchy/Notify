@@ -6,6 +6,9 @@
 body {
     padding:10px;
 }
+select {
+  padding:3px 8px;
+}
 .main_containter {
     padding:60px;
     background: lightgray;

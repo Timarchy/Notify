@@ -19,7 +19,7 @@ if(isset($_POST['create_user'])){
 
     $create_user_query = mysqli_query($connection, $query);
 
-    confirm($create_user_query);
+    header( "Location: login_page.php");
 
 }
 
